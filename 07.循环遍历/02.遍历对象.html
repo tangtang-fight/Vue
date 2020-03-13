@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 1.传统方式 -->
+    <h2>{{info.age}}</h2>
+
+    <!-- 2.遍历方式,获取一个值---是获取value -->
+    <ul>
+      <li v-for="item in info">{{item}}</li>
+    </ul>
+
+    <!-- 3.遍历方式，获取两个值(value,key) -->
+    <ul>
+      <li v-for="(value,key) in info">{{value +" "+value}}</li>
+    </ul>
+    <!-- 4.获取index -->
+    <ul>
+      <li v-for="(value,key,index) in info">{{value +" "+ key +" "+ index}}</li>
+    </ul>
+
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        info:{
+          name: "tom",
+          age: 18,
+          height: 1.88,
+        }
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+<!-- 
+      全局组件和局部组件：
+        1.全局组件--可以在Vue的多个实例中使用
+          Vue.component()
+        2.局部组件--在vue的实例下面使用，就只能在这个实例中使用
+ -->
+
+
+</head>
+<body>
+
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <div id="app2">
+    <cpn></cpn>
+  </div>
+
+  <script src="../js/vue.js"></script>
+
+  <script>
+
+    // 1.创建组件构造器
+    const cpnConstructor = Vue.extend({
+      template: `
+        <div>
+          <h2>我是标题</h2>
+          <p>我是内容</p>
+        </div>`,
+    })
+
+    // 2.注册组件(全局组件：可以在Vue的多个实例对象中使用)
+    Vue.component('cpn',cpnConstructor)
+
+
+    // 下面就是Vue的实例对象，只有一个(真实开发，只有一个实例)，但是实际可以有多个
+    let app = new Vue({
+      el:"#app",
+      data:{
+      },
+      methods:{
+      },
+    })
+
+    const app2 = new Vue({
+      el: '#app2',
+      data:{
+        message: '你好Vue',
+      },
+      methods:{
+
+      },
+      computed: {
+        
+      },
+      filters: {
+        
+      },
+      // 实例内部创建组件,局部组件
+      components: {
+        // cpn使用组件时的标签名
+        // 用法： 标签名：构造器
+        cpn: cpnC,
+      }
+    })
+  </script>
+</body>
+</html>

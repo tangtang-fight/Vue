@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <!-- 
+        props中的驼峰标识问题：cInfo 会发生错误
+          父组件中如果有 info
+          子组件中需要传入命名为cInfo
+          现在版本的Vue可以支持驼峰标识
+   -->
+
+
+</head>
+<body>
+
+  <div id="app">
+    <!-- 传入数据 -->
+    <cpn :cinfo="info"></cpn>
+  </div>
+
+  <template id="cpn">
+    <h2>{{cInfo}}</h2>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const cpn = {
+      template: '#cpn',
+      props: {
+        // 需要传入的子组件
+        cInfo: {
+          type: Object,
+          // dafault：默认值。如果是一个函数 则return必须返回一个对象。
+          default() {
+            return {}
+          }
+        }
+      }
+    }
+
+    let app = new Vue({
+      el:"#app",
+      data:{
+        // 将info这个数据传入子组件中
+        info: {
+          name: 'tom',
+          age: 18,
+          height: 1.88,
+        }
+      },
+      methods:{
+      },
+      components:{
+        cpn
+      }
+    })
+  </script>
+</body>
+</html>

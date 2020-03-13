@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- v-mode实现了数据的双向绑定 v-model="message" 这样就和message实现了双向绑定 -->
+    <!-- 之前都是把数据绑定在Mustache语法内部，现在可以绑定在input内部 -->
+    <!-- 以前是页面显示data中的数据，一旦数据发生改变，页面也会改变，反过来页面不能修改data数据 -->
+    <!-- 现在v-model改变页面数据也会反过来改变data数据---双向绑定 -->
+
+    <input type="text" v-model="message">{{message}}
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好Vue",
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- select 不常用 -->
+    <!-- 1.选择一个 -->
+
+    <select name="abc" id="fruit" v-model="isSelct">
+      <option value="苹果" >苹果</option>
+      <option value="香蕉" >香蕉</option>
+      <option value="橘子" >橘子</option>
+      <option value="榴莲" >榴莲</option>
+    </select>
+    <h2>你选择的是：{{isSelct}}</h2>
+
+    <!-- 2.选择多个，按住ctrl键可以选择多个 -->
+    <select name="abc" v-model="fruits" multiple>
+      <option value="苹果" >苹果</option>
+      <option value="香蕉" >香蕉</option>
+      <option value="橘子" >橘子</option>
+      <option value="榴莲" >榴莲</option>
+    </select>
+    <h2>你选择的是：{{fruits}}</h2>
+
+    
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        isSelct: '香蕉',  //单选框
+        fruits: [], //多选框
+        
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

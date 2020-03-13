@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 哪些方法在修改数组的时候能够做到响应式 -->
+
+
+    <ul>
+      <li v-for="item in letter" :key="item">{{item}}</li>
+    </ul>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        letter: ["b","a","c","d"],
+      },
+      methods:{
+        // 1.push方法--响应式的
+        btnClick(){
+          //this.letter.push("a","b");
+          // 报了错误：因为每次添加的都是一个，所以key每一次都一样就重复了。
+
+        // 2.通过索引值修改数组中的元素
+          //this.letter[0] ="bbb";
+          // 点击发现界面没有改变
+
+        // 2.pop()---从最后一个删除
+          //this.letter.pop();
+
+        // 3.shift()---从第一个删除
+          //this.letter.shirt();
+
+        // 4.unshift() ---从第一个添加
+          //this.letter.unshift("aaa","bbb");
+
+        // 5.splice()---删除/插入/替换数组中元素，第二个元素开始，删除两个元素
+        //删除元素：splice(2，2) 从第二个参数删除，删除两个
+        //         splice(2)  从第二个参数删除后面所有的
+        //替换元素：splice(1,3,"m","n","l") 先删除第234个元素，然后在添加元素
+        //插入元素：splice(1,0,"x","y","z") 从第一个开始，删除0个然后在后面插入
+          // this.letter.splice(2,2)
+          
+        // 6.sort()--排序
+          // this.letter.sort()
+        // 7.resverse()--反转
+          // this.letter.reverse();
+
+        //只有通过索引的方式修改数组元素不是响应式的
+        //1.想要修改的话--使用替换的方式
+          // this.letter.splice(1,1,"m")
+        //2.vue的set(要修改的对象,索引值,修改后的值)方法 
+
+          Vue.set(this.letter,0,"m");
+
+        }
+        
+
+
+      },
+    })
+  </script>
+</body>
+</html>

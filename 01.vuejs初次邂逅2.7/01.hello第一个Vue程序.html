@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h2>{{message}}</h2>
+        <h1>{{name}}</h1>
+    </div>
+
+
+
+
+
+    <!-- 第一步引入vue.js -->
+
+    <script src="js/vue.js"></script>
+
+    <script>
+        //创建vue实例：在vue.js中已经创建了function Vue(){}
+        //一般函数里面都是传参，但是vue中的参数是一个对象{}
+
+        //Vue这种编程叫做：声明式编程---更好用
+
+        //响应式：当数据发生改变时，界面会自动发生改变。
+
+        //优点：数据和页面完全分离
+        
+        const app = new Vue({
+            el: '#app',     //用于挂载要管理的元素
+            data: {         //定义数据
+                message:'你好，Vue！',
+                name:'tangtang'
+            }
+        })
+
+
+        //元素js的做法(编程范式：命令式编程---一步一步的做)
+        //1.创建div元素，设置id属性
+
+        //2.定义一个变量叫message
+
+        //3.将message变量放在前面的div元素中显示
+
+        //4.修改message的数据:'今天天气不错!'
+
+        //5.将修改后的数据再次替换到div元素
+
+
+    </script>
+
+
+</body>
+</html>

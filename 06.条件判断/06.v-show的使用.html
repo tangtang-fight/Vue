@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- v-if:当条件为false时，包含v-if指令的元素，根本就不会存在dom中 -->
+    <h2 v-if="isTrue">{{message}}</h2>
+
+    <!-- v-show:当条件为false时，v-show只是给我们的元素添加一个行内样式：display：none -->
+    <h2 v-show="isTrue">{{message}}</h2>
+
+    <!-- 当需要在显示与隐藏之间切换很频繁，使用v-show(因为没有删除)
+         当只有一次切换时，使用v-if
+     -->
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好vue",
+        isTrue: true,
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

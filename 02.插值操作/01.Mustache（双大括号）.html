@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+
+  <!-- 
+      Mustache(胡须)语法
+        1.将data中的文本数据，插入HTML中
+        2.Mustache方法---{{}}---双大括号
+        3.一个文本中不止写一个Mustache
+   -->
+
+
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{message}},汤汤</h2>
+
+    <!-- Mustache语法中，不仅仅可以直接写变量，也可以写简单的表达式 -->
+    <h2>{{firstName + lastName}}</h2>
+    <h2>{{firstName +''+ lastName}}</h2>
+    <h2>{{firstName}}   {{lastName}}</h2>
+    <h2>{{counter*2}}</h2>
+
+
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: '你好',
+        firstName: 'kobe',
+        lastName: 'bryant',
+        counter: 100
+
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

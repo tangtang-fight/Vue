@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+
+  <!-- 
+        v-on修饰符：
+          在一个div里，有文字和一个按钮，当给div和按钮都绑定事件后。
+          点击按钮，div事件和btn事件都同时触发。
+
+          目的：点击按钮 只想要btn事件，点击其他地方div 才响应div事件
+          
+          1. stop修饰符的使用
+            @click.stop=""
+
+          2. prevent修饰符的使用
+            原本：打印且自动提交
+            通过prevent阻止默认行为，自己手动提交而不是通过submit提交
+
+   -->
+
+
+
+  <div id="app">
+    <!-- 1. stop -->
+    <div @click="divClick">
+      aaaaaaaaaas
+      <button @click.stop="btnClick">按钮</button>
+    
+    <!-- 2. prevent -->
+    <br>
+    <form action="baidu">
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <!-- 3. 监听某个键盘的键帽 -->
+    <!-- 比如输入之后，需要回车来确定，所以监听回车前的按键 -->
+    <input type="text" @keyup.enter="keyUp">
+
+    <!-- 4.native -->
+
+    
+  </div>
+    <!-- 5.once 按钮只能点击一次(响应一次) -->
+    <button @click.once="onceClick">按钮5</button>
+  </div>
+
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+      },
+      methods:{
+        btnClick(){
+          console.log("btnClick");
+        },
+        divClick(){
+          console.log("divClick");
+        },
+        submitClick(){
+          console.log("submitClick")
+        },
+        keyUp(){
+          console.log("keyUp");
+        },
+        onceClick(){
+          console.log("onceClick")
+        }
+      },
+    })
+  </script>
+</body>
+</html>

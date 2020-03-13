@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 1. v-if (true)显示(渲染)内容   (false)不显示(不渲染)内容 -->
+    <h2 v-if="false">{{message}}</h2>
+
+    <!-- 2. 上面写死了，改成变量的-->
+    <h2 v-if="isShow">{{message}}</h2>
+
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好呀",
+        isShow: true,
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

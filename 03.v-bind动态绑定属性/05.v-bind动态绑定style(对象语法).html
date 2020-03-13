@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    
+  <!-- <h2 :style="{key1:value1 ,key2:value2}">{{message}}</h2> -->
+  <!-- <h2 :style="{key(css属性名:value(属性值))}"></h2> -->
+
+  <!-- <h2 style="{font-size:50px}"></h2> -->
+  <!--发现报错了，因为vue将这个50px当成一个变量了,结果发现找不到这个变量就报错了 -->
+
+  <!-- 需要加单引号,并且必须使用驼峰命名法  比如font-size 要写成 fontSize -->
+  <h2>{{message}}</h2>
+  <h2 :style="{fontSize:'50px'}">{{message}}</h2>
+  <!-- 这样写太长了 -->
+  <h2 :style="{fontSize:finalSize + 'px',background:finalColor}">{{message}}</h2>
+
+  <h2 :style="getStyle()">{{message}}</h2>
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: '你好vue',
+        finalSize: 100,
+        finalColor: 'red',
+      },
+      methods:{
+        getStyle:function(){
+          return {fontSize:this.finalSize +'px' , background:this.finalColor}
+        }
+      },
+    })
+  </script>
+</body>
+</html>

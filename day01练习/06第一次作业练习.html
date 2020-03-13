@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <!-- 
+        实现点击谁，谁变成红色
+          v-for和v-bind结合
+   -->
+
+   <style>
+     .active {
+       color: red;
+     }
+   </style>
+
+
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <ul>
+      <li v-for="(m,index) in movies"
+        v-on:click="btnClick(index)"
+        :class="{active:currentIndex===index}"
+          >{{index +". "+ m}}</li>
+    </ul>
+
+
+  </div>
+
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好Vue",
+        movies: ["火影忍者","海贼王","悬崖边上的金鱼公主","你的名字"],
+        currentIndex: 0,
+
+      },
+      methods:{
+        btnClick(index){
+          this.currentIndex = index;
+        }
+      },
+    })
+  </script>
+</body>
+</html>

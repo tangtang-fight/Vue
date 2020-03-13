@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>{{message}}</h1>
+        
+        <!-- 将数组以列表形式展示 -->
+        <!-- <ul>
+            <li>{{movies[0]}}</li>
+            <li>{{movies[1]}}</li>
+            <li>{{movies[2]}}</li>
+            <li>{{movies[3]}}</li>
+        </ul> -->
+
+
+        <!-- 上面操作太麻烦 Vue的方式 -->
+        <ul>
+            <!-- 使用v-for遍历 -->
+            <li v-for = "item in movies">{{item}}</li>
+        </ul>
+
+    </div>
+    
+    <script src="js/vue.js"></script>
+
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                
+                //这里的数据先写死，后面的数据可能是来自网络
+
+                messgae: '你好Vue',
+                movies:['海贼王' ,"火影" , "星际穿越" , "少年派"]
+
+            }
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- v-on参数传递 -->
+
+    <!-- 第一种：没有参数，方法的()可以不添加 -->
+    <button @click="btnClick">按钮1</button>
+
+    <!-- 第二种，在定义时，写函数省略了小括号，但是方法本省是需要一个参数的 -->
+    <!-- 这时Vue会将浏览器生产的event事件对象作为参数传入方法中 -->
+    <button @click="btn2Click(123)">按钮2</button>
+
+    <!-- 第三种：方法定义时，我们需要event对象，同时有需要其他参数 -->
+    <!-- 在调用方式，如何手动的获取浏览器参数的event对象:$event -->
+    <!-- 当有两个参数时，event对象会附加给第一个参数 -->
+    <!-- btn3click   btn3click(abc,event)  这样第一个为event对象，第二个是个变量，无法手动获取event对象-->
+    <!-- btn3click(123,event) 这样第一个绑定event，第二个报错-->
+    <button @click="btn3Click">按钮3</button>
+
+    
+    <button @click="btn3Click(123,$event)">按钮4</button>
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        event:'codeerwhy',
+      },
+      methods:{
+        btnClick(){
+          console.log('btnClick');
+        },
+        btn2Click(event){
+          console.log("---------",event);
+        },
+        btn3Click(abc,event){
+          console.log("+++++++++",abc,event)
+        }
+      },
+    })
+  </script>
+</body>
+</html>

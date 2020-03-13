@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <!--  将所有书的价格打印出来 -->
+
+    <!-- 1.传统方法 -->
+    <h2>总价格(正常Mustache)：{{books[0].price + books[1].price}}</h2>
+
+    <!-- 2. 写一个方法 -->
+    <h2>总价格(添加methods)：{{sumPrice()}}</h2>
+
+    <!-- 3. 使用计算属性computed -->
+    <h2>总价格(computed方式)：{{totalPrice}}</h2>
+
+
+  </div>
+
+
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        books: [
+          {id: 110 , name: 'Unix编程艺术' , price: 119},
+          {id: 111 , name: '代码大全' , price: 105},
+          {id: 112 , name: '深入理解计算机原理' , price: 98},
+          {id: 113 , name: '现代操作系统' , price: 97}
+        ]
+      },
+      methods:{
+        sumPrice:function(){
+          let a = 0;
+          for(let i=0 ; i<this.books.length ; i++){
+            a+=this.books[i].price;
+          }
+          return a;
+        }
+      },
+      computed: {
+        totalPrice:function(){
+          let result = 0;
+          for(let i=0 ;i<this.books.length; i++){
+            result += this.books[i].price;
+          }
+          return result;
+
+          //ES6中的遍历
+          // for(let i in this.books){
+          //   this.book[i]
+          // }
+
+          // for(let books of this.books){
+
+          // }
+
+        }
+      }
+
+    })
+  </script>
+</body>
+</html>

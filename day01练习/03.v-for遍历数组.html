@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <ul>
+      <!-- <li v-for="m in movies">{{m}}</li> -->
+      <li v-for = 'item in movies'>{{item}}</li>
+    </ul>
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: 'v-for遍历数组',
+        movies: ['海贼王','火影忍者','悬崖边上的金鱼公主',"进击的巨人"],
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

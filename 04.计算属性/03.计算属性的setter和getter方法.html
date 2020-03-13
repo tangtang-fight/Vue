@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <h2>{{message}}</h2>
+
+    <h2>{{fullName}}</h2>
+
+  </div>
+
+
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好呀",
+        firstName: "kobe",
+        lastName: "Bryant",
+      },
+      methods:{
+      },
+      computed: {
+        // fullName:function(){
+        //   return this.firstName +" "+this.lastName;
+        // }
+
+        //因为是计算属性，上面的典型的是一个方法的形式，那么完整的计算属性
+        //计算属性为一个对象应该有set和get方法，且应该为属性的表示方法
+        //一般情况下，计算属性只用实现get方法就可以了，一般没有set方法(只读属性)
+
+        fullName: {
+          set:function(newValue){
+            console.log("------",newValue);
+            //因为要分别获取传入的名和姓
+            const names = newValue.split(" ");
+            this.firstName = name[0];
+            this.lastName = name[1];
+            //这里改变了上面的firstName和lastName，所以下面的也会变
+            //DOM显示的也自然改变。
+          },
+          get:function(){
+            return this.firstName +" "+ this.lastName;
+          }
+        }
+
+        //但是因为只有一个get方法，那么这样又写一个get比较麻烦，所以直接简写成第一种
+        //set方法,当你给app.fullName = "abc" 赋值操作的时候，就会调用set方法
+        //因为set方法会接受传入的值，所以应该有一个形参newValue
+
+
+      }
+    })
+  </script>
+</body>
+</html>

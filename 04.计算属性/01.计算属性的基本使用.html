@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 
+          将firstName和lastName写在dom中，并且以空格隔开
+     -->
+
+    <!-- 1. 普通的写法 -->
+    <h2>{{firstName}} {{lastName}}</h2>
+    <h2>{{firstName +' ' +lastName}}</h2>
+
+    <!-- 2. 添加方法 -->
+    <h2>{{getFullName()}}</h2>
+
+    <!-- 3. 计算属性 --第四个属性 el data methods computed-->
+     <h2>{{fullName}}</h2>
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        firstName: 'lebron',
+        lastName: 'james',
+      },
+      methods:{
+        getFullName:function(){
+          return this.firstName +' ' +this.lastName;
+        }
+      },
+      //计算属性,所以在命名时就用属性的方式 比如getFullName()是方法  fullName()就比较像属性
+      //在使用计算属性时，不需要加括号
+      computed: {
+        fullName:function() {
+          return this.firstName +' ' +this.lastName;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

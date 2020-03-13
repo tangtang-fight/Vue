@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三个高阶函数练习</title>
+
+<!-- 需求1：给出一个数组，挑选出元素小于100的放入一个新数组中newArr1 -->
+<!-- 需求2：将新数组的元素每个都乘以2，再放到一个新数组中newArr2 -->
+<!-- 需求3：对newArr2中的元素求和，输出总数 -->
+
+</head>
+<body>
+  
+<script>
+  // 1.传统方法
+   const arr = [10,20,30,40,555,666,777];
+  // let newArr1 = [];
+
+  // for(let i of arr){
+  //   if(i<100){            //需求1
+  //     newArr1.push(i)
+  //   }
+  // }
+  // let newArr2 = [];
+  // for(let i of newArr1){
+  //   newArr2.push(i*2)     //需求2
+  // }
+  // let result = 0;
+  // for(let i of newArr2){
+  //   result += i;
+  // }
+  // console.log(result)
+
+  // 2.使用三个高阶函数(filter/map/reduce)
+
+  // let newArr1 = arr.filter(function(n){
+  //   return n<100;
+  // })
+  // let newArr2 = newArr1.map(function(n){
+  //   return n*2
+  // })
+  // let result = 0;
+  // let total = newArr2.reduce(function(preValue,n){
+  //   return preValue + n;
+  // }, 0)
+  
+  // 3.使用箭头函数简化
+  let total = arr.filter(n => n<100).map(n => n*2).reduce((preValue,n) => preValue+=n, 0)
+  console.log(total)
+
+</script>
+
+  
+</body>
+</html>

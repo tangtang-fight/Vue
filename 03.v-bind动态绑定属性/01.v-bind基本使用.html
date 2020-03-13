@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+    <!-- 
+          方法1：直接将图片地址加入
+              这样就写死了
+          方法2：动态绑定，因为这些地址可能是从服务器中获取的
+              我们把从服务器请求到的数据先放在data中
+              然后通过动态的语法，绑定属性
+    -->
+  <div id="app">
+
+    <img v-bind:src="imgURL" alt="">
+
+    <a v-bind:href="aHref">百度一下</a>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el:"#app",
+      data:{
+        message: '你好vue',
+        imgURL: 'https://img14.360buyimg.com/mobilecms/s140x140_jfs/t1/101923/36/11431/86231/5e357689Eab6636b3/c0ce3a0e312c325d.jpg.webp',
+    
+        aHref: 'http://www.baidu.com'
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

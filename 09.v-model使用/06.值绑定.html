@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 1.checkbox 单选框 -->
+
+    <!-- <label for="license">
+      <input type="checkbox" id="license" v-model="isAgree">同意协议
+    </label>
+
+    <h2>您选择的是：{{isAgree}}</h2>
+    <button :disabled="!isAgree">下一步</button> -->
+
+    <!-- 2.checkbox 多选框 -->
+    <label for="play">
+      <input type="checkbox" id="play" value="篮球" v-model="hobbies">篮球
+      <input type="checkbox" id="play" value="足球" v-model="hobbies">足球
+      <input type="checkbox" id="play" value="乒乓球" v-model="hobbies">乒乓球
+      <input type="checkbox" id="play" value="羽毛球" v-model="hobbies">羽毛球
+    </label>
+    <h2>你的爱好:{{hobbies}}</h2>
+
+    <!-- 
+          值绑定： 
+            因为上面的值我们都写好了，实际中服务器给我传过来的数据应该是一个列表形式
+            id和value和for都是动态绑定的
+            意思就是值不要写死，需要动态的绑定
+     -->
+
+    <label  v-for="item in originHobbies" :for="item">
+      <input type="checkbox" id="item" :value="item" v-model="hobbies">{{item}}
+    </label>
+
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好Vue",
+        isAgree: false,
+        hobbies: [],
+        originHobbies: ['篮球','足球','乒乓球','羽毛球','台球','高尔夫球']
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 
+          修饰符
+            1.lazy(懒加载)
+              -因为用户现在每次输入一个字符，就开始加载--可以等用户输入完成后再加载
+              -一般等用户点击回车或者输入框失去焦点时才绑定--这样可以使绑定没有那么频繁
+            
+            2.number
+              -希望用户输入的是数据类型为数字--传统做法是将input中的type改成number类型
+            
+     -->
+     <!-- 1.修饰符：lazy -->
+     <input type="text" v-model.lazy="message">
+     <h2>{{message}}</h2>
+
+     <!-- 2.修饰符：number -->
+     <!-- v-model 默认绑定赋值的都是是string类型的 -->
+     <!-- 作用：将数据类型转换为number -->
+     <input type="text" v-model.number="age">
+     <h2>{{typeof age}}</h2>
+
+     <!-- 3.修饰符：trim -->
+     <!-- 作用：去除输入数据两边的空格 -->
+     <input type="text" v-model.trim="name">
+     <h2>您输入的名字是：{{name}}</h2>
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: '你好Vue',
+        age: 0,
+        name: "tom",
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

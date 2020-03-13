@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+
+  <!-- 
+        vue表单复用的问题：
+          1.如果有两个input，且两个位置是互斥的，vue内部不会创建两个，而是在虚拟DOM中将值改变
+          2.所以就导致input输入的内容，在第二个input中仍然有
+          3.想要显示不同的东西，则需要加入key关键字，关键字不同则不会复用
+   -->
+
+
+
+  <div id="app">
+    <span v-if="isTrue">
+      <label for="username">用户账号</label>
+      <input type="text" id="username" placeholder="用户账号" key="username">
+    </span>
+    <span v-else>
+      <label for="email">用户邮箱</label>
+      <input type="text" id="email" placeholder="用户邮箱" key="email">
+    </span>
+
+    <button @click="myClick">切换类型</button>
+
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        isTrue: true,
+      },
+      methods:{
+        myClick(){
+          this.isTrue = !this.isTrue;
+        }
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <!-- 下面有很多代码，需要重复使用，粘贴复制导致太多重复性代码 -->
+  <!-- 对于构造的组件，不仅在这里可以使用，在多个项目都可以进行 -->
+
+  <!-- 
+        组件化步骤：
+          1.创建组件构造器 script标签中
+            const cpnContructor = Vue.extend({
+              template:`需要封装的内容`,
+            })
+
+          2.注册组件
+            Vue.component('组件的标签名', 创建的组件构造器)
+          
+          3.使用组件
+            在页面的div中使用组件
+            只能在Vue的实例中使用这个组件
+   -->
+
+
+</head>
+<body>
+
+  <!-- cpn为component缩写,下面cpn内的就是一个组件 -->
+  <!-- 
+    <cpn>
+    <h2>我是标题</h2>
+    <p>我是内容</p>
+    <p>我是内容,哈哈哈哈</p>
+  </cpn> 
+  -->
+
+  <div id="app">
+    <!-- 3.使用组件 -->
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+  </div>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    // 1. 创建组件构造器对象
+    const cpnContructor = Vue.extend({
+      // template 表示模块的意思，下面定义了一个模板
+      template: `
+        <div>
+          <h2>我是标题</h2>
+          <p>我是内容，哈哈哈哈</p>
+          <p>我是内容，呵呵呵呵</p>
+        </div>`,
+    })
+
+    // 2. 注册组件
+    // Vue.component('组件的标签名', 创建的组件构造器)
+    Vue.component('my-cpn',cpnContructor)
+
+    let app = new Vue({
+      el:"#app",
+      data:{
+      },
+      methods:{
+      },
+    })
+  </script>
+</body>
+</html>

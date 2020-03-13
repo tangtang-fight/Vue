@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <!-- 
+        任务：将计数器封装为一个组件
+          解释了为什么data是一个函数而不是一个属性
+            因为创建的实例对象，每一个都是互不干预的，
+            是函数，则每次实例都会调用一次函数。
+            如果是属性，则会相互干扰。
+   -->
+
+</head>
+<body>
+  <!-- 根据组件创建了3个组件实例<cpn></cpn>就是一个组件实例 -->
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>计数器：{{counter}}</h2>
+      <button @click="decrement()">-</button>
+      <button @click="increment()">+</button>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    // 创建一个全局组件
+    Vue.component('cpn',{
+      template: '#cpn',
+      data() {
+        return {
+          counter: 0,
+        }
+        
+      },
+      methods:{
+        decrement(){
+          return this.counter--;
+        },
+        increment(){
+          return this.counter++;
+        }
+      },
+    })
+
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message:"你好Vue",
+      },
+      
+    })
+  </script>
+</body>
+</html>

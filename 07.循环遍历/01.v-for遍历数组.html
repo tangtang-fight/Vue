@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+
+  <style>
+    .isTrue{
+      color: red;
+    }
+  </style>
+
+
+
+</head>
+<body>
+  <div id="app">
+
+    <h2>{{message}}</h2>
+    <ui>
+      
+      <!-- 1.遍历且加下标值 -->
+      <li v-for="(m,index) in movies"
+          :class="{isTrue:currentIndex===index}"
+          @click="myClick(index)"
+      >{{index +" "+ m}}</li>
+      
+
+    </ui>
+
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好vue",
+        movies:["海贼王","火影忍者","你的名字","秒速五厘米"],
+        currentIndex: 0,
+      },
+      methods:{
+        myClick(index){
+          this.currentIndex=index;
+        }
+      },
+    })
+  </script>
+</body>
+</html>

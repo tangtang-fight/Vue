@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- 第一种方法：直接使用Mustache拼接 -->
+    <h2>{{firstName +" "+ lastName}}</h2>
+
+    <!-- 第二种方法: 添加methods方法 -->
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+
+    <!--第三种方法：computed计算属性 -->
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+
+    <!--在多次调用的时候，发现计算属性，只会调用一次，能不会有一个缓存，性能更高 -->
+
+  </div>
+
+
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好呀",
+        firstName: "kobe",
+        lastName: "Bryant",
+      },
+      methods:{
+        getFullName:function(){
+          console.log("getFullName");
+          return this.firstName +" "+ this.lastName;
+        }
+      },computed: {
+        fullName: function(){
+          console.log("fullName");
+          return this.firstName +" "+ this.lastName       }
+      }
+    })
+  </script>
+</body>
+</html>

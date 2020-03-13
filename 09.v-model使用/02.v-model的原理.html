@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <!-- <input type="text" v-model="message"> -->
+
+    <!-- 之前将数据绑定在input -->
+    <!-- input有一个input事件-用于监听用户输入 -->
+    <!-- 就像button有click事件一样 -->
+    <!-- 一旦用户输入，就会触发input事件 -->
+    <!-- 这时我们就想时时的把用户输入的数据附加给message -->
+
+    <!-- 1.我们通过 v-bind和v-on两个指令也能实现双向绑定  -->
+    <!-- <input type="text" :value="message" @:input="valueChange"> -->
+
+    <!-- 2.上面的简写，把方法内的放在input表达式内 -->
+    <input type="text" :value="message" @input="message = $event.target.value">
+
+
+    <h2>{{message}}</h2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:"#app",
+      data:{
+        message: "你好Vue",
+      },
+      methods:{
+        valueChange(event){
+          // this.message = "用户输入的数据"
+          // 用户输入的数据，需要通过event来获取
+          // 因为在界面上产生一个事件之后，浏览器就会自动生成一个event对象，event对象中由我们想要的
+          this.message = event.target.value;
+
+        }
+      },
+    })
+  </script>
+</body>
+</html>

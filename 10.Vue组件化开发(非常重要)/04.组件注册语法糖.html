@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+  <script src="../js/vue.js"></script>
+  <script>
+
+    // 一：原始注册方式
+    //  1.创建组件构造器 const cpn1 = Vue.extend({})
+    //  2.注册组件       Vue.component("标签名",构造器)
+
+    // 二：语法糖方式 --只需要将构造器中的{template:``,}放到注册组件中。
+    // 语法糖方式注册全局组件
+    Vue.component('cpn1' , {
+      template: `
+        <div>
+          <h2>语法糖写法全局组件</h2>
+          <P>这是一个段落</p>
+        </div>`,
+    })
+
+
+    let app = new Vue({
+      el:"#app",
+      data:{
+      },
+      methods:{
+      },
+      // 注册局部组件
+      components: {
+        'cpn2':{
+          template: `
+            <div>
+              <h2>语法糖写法局部组件</h2>
+              <P>这是一个段落</p>
+            </div>`,
+        }
+      }
+    })
+  </script>
+</body>
+</html>

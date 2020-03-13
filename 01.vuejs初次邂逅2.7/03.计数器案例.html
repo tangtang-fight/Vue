@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue计数器</title>
+
+    <!-- 
+        计数器案例：
+            点击 +  计数器加1
+            点击 -  计数器减1
+     -->
+  </head>
+  <body>
+    <div id="app">
+      <h1>当前记录:{{conunter}}</h1>
+      <h2></h2>
+
+      <!-- 
+            Vue中庸v-on：添加事件
+            v-on:click  添加点击事件
+         -->
+
+      <!-- 功能1：实现点击增加减少 -->
+      <!-- <button v-on:click="conunter++">+</button> -->
+      <!-- <button v-on:click="conunter--">-</!-->
+
+      <!-- 功能2：点击按钮并返回一段话 -->
+      <button v-on:click="add">+</button>
+      <button v-on:click="sub">-</button>
+    </div>
+
+    <script src="js/vue.js"></script>
+
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          conunter: 0
+        },
+        methods: {
+          add: function() {
+            //直接写counter不行，counter指向全局
+            //但是全局中没有counter，需要使用this.counter绑定调用的对象
+            this.conunter++;
+            console.log('add被执行');
+          },
+          sub: function() {
+            this.conunter--;
+            console.log('sub被执行');
+          }
+        }
+      });
+
+      //命令式：
+
+      //原先js：1拿button元素
+
+      //2.添加监听时间
+    </script>
+  </body>
+</html>
